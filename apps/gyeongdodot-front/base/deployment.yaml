@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gyeongdodot-front
+  namespace: gyeongdodot
+  labels:
+    app: gyeongdodot-front
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gyeongdodot-front
+  template:
+    metadata:
+      labels:
+        app: gyeongdodot-front
+    spec:
+      containers:
+      - name: gyeongdodot-front
+        image: hub.klr.kr/gyeongdodot_front:latest
+        ports:
+        - containerPort: 80
