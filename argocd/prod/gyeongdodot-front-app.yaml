@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gyeongdodot-infra
+  name: gyeongdodot-prod-front
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/leestana01/gitops
+    repoURL: https://github.com/team-CtrlG/gitops
     targetRevision: HEAD
-    path: gyeongdodot/apps/gyeongdodot-infra/overlays/prod
+    path: apps/gyeongdodot-front/overlays/prod
 
   destination:
     server: https://kubernetes.default.svc

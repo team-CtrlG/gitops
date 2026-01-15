@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gyeongdodot-back
-  namespace: gyeongdodot
   labels:
     app: gyeongdodot-back
 spec:
