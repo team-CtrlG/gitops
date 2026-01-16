@@ -6,4 +6,3 @@ namespace: gyeongdodat-dev
 resources:
   - namespace.yaml
   - ingress.yaml
-  - redis-secret.yaml
