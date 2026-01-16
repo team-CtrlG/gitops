@@ -19,3 +19,14 @@ spec:
         image: hub.klr.kr/gyeongdodot_back:latest
         ports:
         - containerPort: 8080
+        env:
+          - name: SPRING_DATA_REDIS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: gyeongdodot-redis
+                key: SPRING_DATA_REDIS_HOST
+          - name: SPRING_DATA_REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: gyeongdodot-redis
+                key: SPRING_DATA_REDIS_PASSWORD
