@@ -8,4 +8,4 @@ replicas:
     count: 1
 images:
   - name: hub.klr.kr/gyeongdodot_back
-    newTag: 10fff79-12
+    newTag: e8a7022-13
