@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gyeongdodat-back
+  labels:
+    app: gyeongdodat-back
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gyeongdodat-back
+  template:
+    metadata:
+      labels:
+        app: gyeongdodat-back
+    spec:
+      containers:
+      - name: gyeongdodat-back
+        image: hub.klr.kr/gyeongdodat_back:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: SPRING_DATA_REDIS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: gyeongdodat-redis
+                key: SPRING_DATA_REDIS_HOST
+          - name: SPRING_DATA_REDIS_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: gyeongdodat-redis
+                key: SPRING_DATA_REDIS_PASSWORD

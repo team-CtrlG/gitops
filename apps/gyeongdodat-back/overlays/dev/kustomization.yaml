@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: gyeongdodat-dev
+
+resources:
+  - ../../base
+
+replicas:
+  - name: gyeongdodat-back
+    count: 1
+
+images:
+  - name: hub.klr.kr/gyeongdodat_back
+    newTag: e8a7022-13

@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gyeongdodat-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - gyeongdodat.klr.kr
+    - api.gyeongdodat.klr.kr
+    secretName: gyeongdodat-tls
+  rules:
+  - host: gyeongdodat.klr.kr
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gyeongdodat-front
+              port:
+                number: 80
+  - host: api.gyeongdodat.klr.kr
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gyeongdodat-back
+              port:
+                number: 8080
